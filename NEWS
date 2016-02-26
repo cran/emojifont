@@ -1,0 +1,16 @@
+CHANGES IN VERSION 0.3.0
+------------------------
+ o add support of fontawesome <2016-02-26, Fri>
+
+CHANGES IN VERSION 0.2.1
+------------------------
+ o fixed R CMD check --as-cran issus <2016-02-25, Thu>
+ 
+CHANGES IN VERSION 0.2.0
+------------------------
+ o add vignette <2016-02-25, Thu>
+ o search_emoji and emoji functions
+
+CHANGES IN VERSION 0.1.0
+------------------------
+ o list.emojifonts and load.emojifont functions
