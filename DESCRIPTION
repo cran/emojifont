@@ -1,7 +1,7 @@
 Package: emojifont
 Type: Package
 Title: Emoji Fonts for using in R
-Version: 0.3.1
+Version: 0.3.2
 Authors@R: c(person(given = "Guangchuang", family = "Yu",
 	   	    email = "guangchuangyu@gmail.com",
 		    role  = c("aut", "cre"))
@@ -15,9 +15,9 @@ VignetteBuilder: knitr
 License: Artistic-2.0
 URL: https://github.com/GuangchuangYu/emojifont
 BugReports: https://github.com/GuangchuangYu/emojifont/issues
-Packaged: 2016-02-26 06:19:54 UTC; guangchuangyu
+Packaged: 2016-03-09 14:01:14 UTC; ygc
 RoxygenNote: 5.0.1
 NeedsCompilation: no
 Author: Guangchuang Yu [aut, cre]
 Repository: CRAN
-Date/Publication: 2016-02-26 08:24:28
+Date/Publication: 2016-03-09 18:55:24
