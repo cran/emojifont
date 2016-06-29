@@ -5,6 +5,7 @@ knitr::opts_chunk$set(tidy = FALSE,
 ## ----echo=FALSE, results="hide", message=FALSE---------------------------
 library("ggplot2")
 library("emojifont")
+library("colorspace")
 
 ## ------------------------------------------------------------------------
 library(emojifont)
@@ -18,6 +19,64 @@ list.emojifonts()
 
 ## load selected emoji font
 load.emojifont('OpenSansEmoji.ttf')
+
+## ----fig.showtext=TRUE---------------------------------------------------
+set.seed(123)
+x <- rnorm(10)
+set.seed(321)
+y <- rnorm(10)
+plot(x, y, cex=0)
+text(x, y, labels=emoji('cow'), cex=1.5, col='steelblue', family='OpenSansEmoji')
+
+## ----fig.showtext=TRUE---------------------------------------------------
+d <- data.frame(x=x, y=y,
+     label = sample(c(emoji('cow'), emoji('camel')), 10, replace=TRUE),
+     type = sample(LETTERS[1:3], 10, replace=TRUE))
+
+library("ggplot2")
+ggplot(d, aes(x, y, color=type, label=label)) + 
+    geom_text(family="OpenSansEmoji", size=6)
+
+## ----fig.showtext=TRUE---------------------------------------------------
+library("ggtree")
+library("colorspace")
+
+tree_text=paste0(
+    "(","(","(",
+       "(",
+            "(",
+               emoji("cow"), ",",
+               "(",
+                  emoji("whale"),",",
+                  emoji("dolphin"),
+               ")",
+            "),",
+            "(",
+               emoji('pig2'),",",
+               emoji('boar'),
+            ")",
+       "),",
+       emoji("camel"),
+    "),", emoji("fish"), "),", 
+emoji("seedling"), ");")
+
+ggtree(read.tree(text=tree_text)) + xlim(NA, 7) +
+    geom_tiplab(family="OpenSansEmoji", size=10,
+                color=rainbow_hcl(8))
+
+## ----fig.showtext=TRUE---------------------------------------------------
+load.fontawesome()
+
+set.seed(2016-03-09)
+fa <- fontawesome(c('fa-github', 'fa-weibo', 'fa-twitter', 'fa-android', 'fa-coffee'))
+d <- data.frame(x=rnorm(20), 
+                y=rnorm(20), 
+     	        label=sample(fa, 20, replace=T))
+
+ggplot(d, aes(x, y, color=label, label=label)) + 
+    geom_text(family='fontawesome-webfont', size=6)+
+    xlab(NULL)+ylab(NULL) +
+    theme(legend.text=element_text(family='fontawesome-webfont'))
 
 ## ----echo=FALSE----------------------------------------------------------
 sessionInfo()
