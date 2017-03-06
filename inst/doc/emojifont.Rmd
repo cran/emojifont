@@ -2,13 +2,15 @@
 title: "An Introduction to emojifont package"
 author: "\\
 
-	Guangchuang Yu (<guangchuangyu@gmail.com>)\\
+	Guangchuang Yu\\
 
         School of Public Health, The University of Hong Kong"
 date: "`r Sys.Date()`"
 output:
-  html_document:
+  prettydoc::html_pretty:
     toc: true
+    theme: cayman
+    highlight: github
   pdf_document:
     toc: true
 vignette: >
@@ -44,7 +46,7 @@ It would be more flexible if we can use emoji as ordinary font and in this way u
 
 The `emojifont` package is designed to bring `emoji` font to R users and is created for users that are impatient and relutant to learn.
 
-The package is very simple, pack some emoji fonts (currently only [OpenSansEmoji.ttf](https://github.com/MorbZ/OpenSansEmoji)) and use [showtext](https://github.com/yixuan/showtext) to render the fonts, then we can use the font in either base plot or ggplot2.
+The package is very simple, pack some emoji fonts (currently only [EmojiOne.ttf](https://github.com/eosrei/emojione-color-font)) and use [showtext](https://github.com/yixuan/showtext) to render the fonts, then we can use the font in either base plot or ggplot2.
 
 ## Installation
 
@@ -75,16 +77,19 @@ emoji(search_emoji('smile'))
 
 # Emoji in R plot
 
+<!--
+
 To support using emoji in R plot, we need to load `emoji` font and then use `family` parameter to specify using the font.
 
 ## load Emoji font
-```{r}
+#```{r}
 ## list available emoji fonts
 list.emojifonts()
 
 ## load selected emoji font
-load.emojifont('OpenSansEmoji.ttf')
-```
+load.emojifont('EmojiOne.ttf')
+#```
+-->
 
 
 ## base plot
@@ -95,7 +100,7 @@ x <- rnorm(10)
 set.seed(321)
 y <- rnorm(10)
 plot(x, y, cex=0)
-text(x, y, labels=emoji('cow'), cex=1.5, col='steelblue', family='OpenSansEmoji')
+text(x, y, labels=emoji('cow'), cex=1.5, col='steelblue', family='EmojiOne')
 ```
 
 
@@ -108,7 +113,7 @@ d <- data.frame(x=x, y=y,
 
 library("ggplot2")
 ggplot(d, aes(x, y, color=type, label=label)) +
-    geom_text(family="OpenSansEmoji", size=6)
+    geom_text(family="EmojiOne", size=6)
 ```
 
 To make it easy to used with `ggplot2`, I implemented a very simple
@@ -149,8 +154,8 @@ tree_text=paste0(
 emoji("seedling"), ");")
 
 ggtree(read.tree(text=tree_text)) + xlim(NA, 7) +
-    geom_tiplab(family="OpenSansEmoji", size=10,
-                color=rainbow_hcl(8))
+    geom_tiplab(family="EmojiOne", size=10,
+                color=rainbow_hcl(8), vjust=.25)
 ```
 
 # Apple Color Emoji
@@ -176,8 +181,6 @@ The `emojifont` package was initially designed for using emoji font. I found tha
 The usage is quite similar as using emoji.
 
 ```{r fig.showtext=TRUE}
-load.fontawesome()
-
 set.seed(2016-03-09)
 fa <- fontawesome(c('fa-github', 'fa-weibo', 'fa-twitter', 'fa-android', 'fa-coffee'))
 d <- data.frame(x=rnorm(20),
@@ -211,6 +214,7 @@ The solution is to manually open a window by calling `X11()` in Linux, `quartz()
 
 Currently, this package support Emoji Font and Font Awesome.
 
++ `EmojiOne.ttf` is downloaded from <https://github.com/eosrei/emojione-color-font>
 + `OpenSansEmoji.ttf` is downloaded from <https://github.com/MorbZ/OpenSansEmoji>
 + `fontawesome-webfont.ttf` is downloaded from <https://github.com/FortAwesome/Font-Awesome>.
 

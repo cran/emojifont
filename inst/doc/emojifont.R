@@ -13,20 +13,13 @@ library(emojifont)
 search_emoji('smile')
 emoji(search_emoji('smile'))
 
-## ------------------------------------------------------------------------
-## list available emoji fonts
-list.emojifonts()
-
-## load selected emoji font
-load.emojifont('OpenSansEmoji.ttf')
-
 ## ----fig.showtext=TRUE---------------------------------------------------
 set.seed(123)
 x <- rnorm(10)
 set.seed(321)
 y <- rnorm(10)
 plot(x, y, cex=0)
-text(x, y, labels=emoji('cow'), cex=1.5, col='steelblue', family='OpenSansEmoji')
+text(x, y, labels=emoji('cow'), cex=1.5, col='steelblue', family='EmojiOne')
 
 ## ----fig.showtext=TRUE---------------------------------------------------
 d <- data.frame(x=x, y=y,
@@ -35,7 +28,7 @@ d <- data.frame(x=x, y=y,
 
 library("ggplot2")
 ggplot(d, aes(x, y, color=type, label=label)) +
-    geom_text(family="OpenSansEmoji", size=6)
+    geom_text(family="EmojiOne", size=6)
 
 ## ----fig.showtext=TRUE---------------------------------------------------
 ggplot() + geom_emoji("rose", color='steelblue') + theme_void()
@@ -67,12 +60,10 @@ tree_text=paste0(
 emoji("seedling"), ");")
 
 ggtree(read.tree(text=tree_text)) + xlim(NA, 7) +
-    geom_tiplab(family="OpenSansEmoji", size=10,
-                color=rainbow_hcl(8))
+    geom_tiplab(family="EmojiOne", size=10,
+                color=rainbow_hcl(8), vjust=.25)
 
 ## ----fig.showtext=TRUE---------------------------------------------------
-load.fontawesome()
-
 set.seed(2016-03-09)
 fa <- fontawesome(c('fa-github', 'fa-weibo', 'fa-twitter', 'fa-android', 'fa-coffee'))
 d <- data.frame(x=rnorm(20),

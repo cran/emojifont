@@ -102,7 +102,7 @@ mapper_ <- function(aliases, font_data) {
     res <- efproto$toUnicode(aliases=aliases, font_data=font_data)
     ii <- is.na(res)
     if (any(ii)) {
-        stop('Invalid: ', paste(aliases[ii], collapse=', '))
+        message('Invalid: ', paste(aliases[ii], collapse=', '))
     }
     return(res)
 }
@@ -129,7 +129,7 @@ emoji <- function(aliases) {
 ##' @return NULL
 ##' @export
 ##' @author ygc
-load.emojifont <- function(font = "OpenSansEmoji.ttf") {
+load.emojifont <- function(font = "EmojiOne.ttf") {
     efproto$load_font(font=font)
 }
 

@@ -1,3 +1,10 @@
+CHANGES IN VERSION 0.4.1
+------------------------
+ o update emoji alias lookup table to Unicode 9 <2017-02-17, Fri>
+ o add EmojiOne font which supports Unicode 9 and use it by default <2017-02-17, Fri>
+   + https://github.com/eosrei/emojione-color-font
+ o auto load emoji and fontawesome fonts <2017-02-16, Thu>
+
 CHANGES IN VERSION 0.4.0
 ------------------------
  o update fontawesome to v4.7.0 <2017-12-15, Wed>
