@@ -37,33 +37,6 @@ y = sin(x)
 ggplot() + geom_emoji('heartbeat', x=x, y=y, size=10)
 
 ## ----fig.showtext=TRUE---------------------------------------------------
-library("ggtree")
-library("colorspace")
-
-tree_text=paste0(
-    "(","(","(",
-       "(",
-            "(",
-               emoji("cow"), ",",
-               "(",
-                  emoji("whale"),",",
-                  emoji("dolphin"),
-               ")",
-            "),",
-            "(",
-               emoji('pig2'),",",
-               emoji('boar'),
-            ")",
-       "),",
-       emoji("camel"),
-    "),", emoji("fish"), "),",
-emoji("seedling"), ");")
-
-ggtree(read.tree(text=tree_text)) + xlim(NA, 7) +
-    geom_tiplab(family="EmojiOne", size=10,
-                color=rainbow_hcl(8), vjust=.25)
-
-## ----fig.showtext=TRUE---------------------------------------------------
 set.seed(2016-03-09)
 fa <- fontawesome(c('fa-github', 'fa-weibo', 'fa-twitter', 'fa-android', 'fa-coffee'))
 d <- data.frame(x=rnorm(20),
