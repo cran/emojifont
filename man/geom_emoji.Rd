@@ -21,7 +21,7 @@ geom_emoji(
 
 \item{size}{size}
 
-\item{x}{x position}
+\item{x}{x positionsym}
 
 \item{y}{y position}
 
@@ -36,5 +36,5 @@ ggplot2 layer
 wrapper layer for visualizing emoji
 }
 \author{
-guangchuang yu
+Guangchuang Yu
 }
